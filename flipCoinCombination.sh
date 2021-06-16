@@ -1,37 +1,67 @@
 #!/bin/bash 
 declare -A coin
 read -p "Enter key value" key
-HH=0
-HT=0
-TH=0
-TT=0
+HHH=0
+HHT=0
+THH=0
+HTH=0
+TTT=0
+TTH=0
+THT=0
+HTT=0
 for((i=0;i<$key;i++))
 do
 coin[random]="$((RANDOM%2))"
 coin[random1]="$((RANDOM%2))"
-if [ ${coin[random]} -eq 0 -a ${coin[random1]} -eq 0 ]
+coin[random2]="$((RANDOM%2))"
+if [ ${coin[random]} -eq 0 -a ${coin[random1]} -eq 0 -a ${coin[random2]} -eq 0 ]
 then
-HH=$(($HH+1))
-echo "HH"
-per_heads=`echo - | awk '{print ('$HH' / '$key') * '100' }'`
-echo "Percentage of HH $per_heads"
-elif [ ${coin[random]} -eq 0 -a ${coin[random1]} -eq 1 ]
+HHH=$(($HHH+1))
+echo "HHH"
+per_heads=`echo - | awk '{print ('$HHH' / '$key') * '100' }'`
+echo "Percentage of HHH $per_heads"
+elif [ ${coin[random]} -eq 0 -a ${coin[random1]} -eq 0 -a ${coin[random2]} -eq 1 ]
 then
-HT=$(($HT+1))
-echo "HT"
-per_heads=`echo - | awk '{print ('$HT' / '$key') * '100' }'`
-echo "Percentage of HT $per_heads"
-elif [ ${coin[random]} -eq 1 -a ${coin[random1]} -eq 0 ]
+HHT=$(($HHT+1))
+echo "HHT"
+per_heads=`echo - | awk '{print ('$HHT' / '$key') * '100' }'`
+echo "Percentage of HHT $per_heads"
+elif [ ${coin[random]} -eq 1 -a ${coin[random1]} -eq 0 -a ${coin[random2]} -eq 0 ]
 then
-TH=$(($TH+1))
-echo "TH"
-per_heads=`echo - | awk '{print ('$TH' / '$key') * '100' }'`
-echo "Percentage of TH $per_heads"
-else
-TT=$(($TT+1))
-echo "TT"
-per_tails=`echo - | awk '{print ('$TT' / '$key') * '100' }'`
-echo "Percentage of TT $per_tails"
+THH=$(($THH+1))
+echo "THH"
+per_heads=`echo - | awk '{print ('$THH' / '$key') * '100' }'`
+echo "Percentage of THH $per_heads"
+elif [ ${coin[random]} -eq 0 -a ${coin[random1]} -eq 1 -a ${coin[random2]} -eq 0 ]
+then
+HTH=$(($HTH+1))
+echo "HTH"
+per_heads=`echo - | awk '{print ('$HTH' / '$key') * '100' }'`
+echo "Percentage of HTH $per_heads"
+elif [ ${coin[random]} -eq 1 -a ${coin[random1]} -eq 1 -a ${coin[random2]} -eq 1 ]
+then
+TTT=$(($TTT+1))
+echo "TTT"
+per_heads=`echo - | awk '{print ('$TTT' / '$key') * '100' }'`
+echo "Percentage of TTT $per_heads"
+elif [ ${coin[random]} -eq 1 -a ${coin[random1]} -eq 1 -a ${coin[random2]} -eq 0 ]
+then
+TTH=$(($TTH+1))
+echo "TTH"
+per_heads=`echo - | awk '{print ('$TTH' / '$key') * '100' }'`
+echo "Percentage of TTH $per_heads"
+elif [ ${coin[random]} -eq 1 -a ${coin[random1]} -eq 0 -a ${coin[random2]} -eq 1 ]
+then
+THT=$(($THT+1))
+echo "THT"
+per_heads=`echo - | awk '{print ('$THT' / '$key') * '100' }'`
+echo "Percentage of THT $per_heads"
+elif [ ${coin[random]} -eq 0 -a ${coin[random1]} -eq 1 -a ${coin[random2]} -eq 1 ]
+then
+HTT=$(($HTT+1))
+echo "HTT"
+per_heads=`echo - | awk '{print ('$HTT' / '$key') * '100' }'`
+echo "Percentage of HTT $per_heads"
 fi
 done
 
