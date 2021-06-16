@@ -1,5 +1,6 @@
 #!/bin/bash 
 declare -A coin
+declare -a coins
 read -p "Enter key value" key
 HHH=0
 HHT=0
@@ -64,4 +65,25 @@ per_heads=`echo - | awk '{print ('$HTT' / '$key') * '100' }'`
 echo "Percentage of HTT $per_heads"
 fi
 done
+coins[0]=$((HHH))
+coins[1]=$((HHT))
+coins[2]=$((THH))
+coins[3]=$((HTH))
+coins[4]=$((TTT))
+coins[5]=$((TTH))
+coins[6]=$((THT))
+coins[7]=$((HTT))
+for((i=0;i<8;++i))
+do
+        for((j=(($i+1));j<8;++j))
+        do
+        if [ ${coins[$i]} -lt ${coins[$j]} ]
+        then
+        temp=${coins[$i]}
+        coins[i]=${coins[$j]}
+        coins[j]=$temp
+        fi
+        done
+done
+echo "Count of combination for HHH is $HHH, HHT is $HHT, THH is $THH, HTH is $HTH, TTT is $TTT, TTH is $TTH, THT is $THT, HTT is $HTT "
 
